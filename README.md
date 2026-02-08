@@ -22,6 +22,7 @@
 
 3. **สำหรับเจ้าของร้าน:** สามารถกดเปลี่ยนสถานะได้ เช่น กด "รับงาน (Confirm)" เมื่อต้องการยืนยันคิว หรือกด "เสร็จสิ้น (Complete)" เมื่อให้บริการเสร็จแล้ว
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/d34c7143-0985-4b37-96f3-581cb5064e1a" />
+<img width="381" height="808" alt="Image" src="https://github.com/user-attachments/assets/5ddbcdbc-651e-4b27-9f4f-17611b98e87e" />
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/545a3a62-7ac5-4908-9e59-1ac2c4245fe5" />
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/669df624-1543-497b-aea5-892e569eb555" />
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/51540e6a-46f5-4046-a99e-b1711f1eb015" />
