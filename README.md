@@ -9,7 +9,7 @@
 ### 2. หน้าหลักและการจองคิว - สำหรับลูกค้า (Customer)
 1. **การเลือกบริการ:** เมื่อเข้าสู่ระบบในฐานะลูกค้า จะพบกับรายการบริการทั้งหมดของทางร้าน ซึ่งดึงข้อมูลมาจากระบบ API ลูกค้าสามารถดูรายละเอียดและราคาบริการได้
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/62fdaae3-7c6a-4e3c-97ff-7e7f6a78ae62" />
-
+<br><br>
 2. **การทำรายการจอง:** ในหน้าจองคิว ลูกค้าสามารถกรอกข้อมูลชื่อสัตว์เลี้ยง เลือกประเภท (สุนัข/แมว) และเลือกบริการผ่าน Dropdown ที่เชื่อมโยงกับฐานข้อมูล
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/f5e0db50-bb2f-4edd-ba1e-c0fa37df2512" />
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/4f24bdd2-01a6-46d6-b7e8-05ec3f3f1859" />
@@ -28,7 +28,7 @@
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/d34c7143-0985-4b37-96f3-581cb5064e1a" />
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/5ddbcdbc-651e-4b27-9f4f-17611b98e87e" />
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/e11d7e88-eb73-428d-a17c-c87571276916" />
-
+<br><br>
 2. สามารถรับการจองโดยการกดเปลี่ยนสถานะ เช่น กด "รับงาน (Confirm)" สถานะการจองจะเปลี่ยนจาก "รออนุมัติ" เป็น "รับงานแล้ว" เมื่อการบริการเสร็จสิ้น สามารกด "เสร็จสิ้น (Complete)" สถานะจะเปลี่ยนเป็น "เสร็จสิ้น"
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/545a3a62-7ac5-4908-9e59-1ac2c4245fe5" />
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/669df624-1543-497b-aea5-892e569eb555" />
