@@ -1,4 +1,3 @@
-// file: lib/booking_screen.dart
 import 'package:flutter/material.dart';
 import 'main.dart';
 
@@ -17,7 +16,6 @@ class _BookingScreenState extends State<BookingScreen> {
   String? _selectedServiceId;
   String _petType = 'Dog';
   
-  // ตัวแปรเก็บ Services ที่โหลดมาจาก API
   List<Map<String, dynamic>> _services = [];
   bool _isLoading = true;
 
@@ -39,9 +37,8 @@ class _BookingScreenState extends State<BookingScreen> {
     if (_formKey.currentState!.validate() && _selectedServiceId != null) {
       final service = _services.firstWhere((s) => s['id'] == _selectedServiceId);
 
-      // เตรียมข้อมูลส่ง API
       final newBooking = {
-        'id': DateTime.now().millisecondsSinceEpoch.toString(), // สร้าง ID เองชั่วคราว
+        'id': DateTime.now().millisecondsSinceEpoch.toString(), 
         'customerName': _nameCtrl.text,
         'petName': _petNameCtrl.text,
         'petType': _petType,
@@ -52,11 +49,10 @@ class _BookingScreenState extends State<BookingScreen> {
         'time': "${TimeOfDay.now().hour}:${TimeOfDay.now().minute}",
       };
 
-      // เรียก API
       showDialog(context: context, barrierDismissible: false, builder: (c) => const Center(child: CircularProgressIndicator()));
       
       bool success = await GlobalData.addBooking(newBooking);
-      Navigator.pop(context); // ปิด Loading
+      Navigator.pop(context);
 
       if (success) {
         showDialog(

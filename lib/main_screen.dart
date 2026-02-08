@@ -23,15 +23,15 @@ class _MainScreenState extends State<MainScreen> {
     // จัดการหน้าจอตาม Role
     if (widget.isAdmin) {
       _pages = [
-        const HomeScreen(isAdmin: true),      // จัดการบริการ
-        const DashboardScreen(),              // ดูยอด (Admin)
-        const HistoryScreen(isAdmin: true),   // จัดการคิว
+        const HomeScreen(isAdmin: true), // จัดการบริการ
+        const HistoryScreen(isAdmin: true), // จัดการคิว
+        const DashboardScreen(), // ดูยอด
       ];
     } else {
       _pages = [
-        const HomeScreen(isAdmin: false),     // ดูบริการ
-        const BookingScreen(),                // จองคิว (User)
-        const HistoryScreen(isAdmin: false),  // ดูประวัติ
+        const HomeScreen(isAdmin: false), // ดูบริการ
+        const BookingScreen(), // จองคิว 
+        const HistoryScreen(isAdmin: false), // ดูประวัติ
       ];
     }
   }
@@ -42,22 +42,28 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
-  // Logout Function
+  // Logout
   void _logout() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginScreen()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Pet Salon",style: TextStyle(color: Color.fromARGB(255, 86, 86, 86)),),
+        title: const Text(
+          "Pet Salon",
+          style: TextStyle(color: Color.fromARGB(255, 86, 86, 86)),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: _logout,
             tooltip: 'ออกจากระบบ',
-          )
+          ),
         ],
       ),
       body: _pages[_selectedIndex],
@@ -66,17 +72,37 @@ class _MainScreenState extends State<MainScreen> {
         onTap: _onItemTapped,
         selectedItemColor: const Color(0xFFFF8FAB),
         unselectedItemColor: Colors.grey,
-        items: widget.isAdmin 
-          ? const [ // เมนู Admin
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'บริการ'),
-              BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'สรุปยอด'),
-              BottomNavigationBarItem(icon: Icon(Icons.list), label: 'คิวงาน'),
-            ]
-          : const [ // เมนู User
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'บริการ'),
-              BottomNavigationBarItem(icon: Icon(Icons.add_circle), label: 'จองคิว'),
-              BottomNavigationBarItem(icon: Icon(Icons.history), label: 'ประวัติ'),
-            ],
+        items: widget.isAdmin
+            ? const [
+                // เมนูแอดมิน
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'บริการ',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.list),
+                  label: 'คิวงาน',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.dashboard),
+                  label: 'สรุปยอด',
+                ),
+              ]
+            : const [
+                // เมนูลูกค้า
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'บริการ',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.add_circle),
+                  label: 'จองคิว',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.history),
+                  label: 'ประวัติ',
+                ),
+              ],
       ),
     );
   }

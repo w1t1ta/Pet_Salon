@@ -35,7 +35,9 @@ class PetSalonApp extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFFFF8FAB),
             foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
             padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
           ),
         ),
@@ -45,18 +47,22 @@ class PetSalonApp extends StatelessWidget {
   }
 }
 
-// --- Global Data (API Connected) ---
+// API
 class GlobalData {
-  static const String baseUrl = 'https://my-json-server.typicode.com/w1t1ta/pet-salon-api';
+  static const String baseUrl = 'http://10.0.2.2:3000';
 
-  // --- Helpers แปลงค่า ---
   static IconData getIconFromName(String name) {
     switch (name) {
-      case 'bathtub': return Icons.bathtub;
-      case 'cut': return Icons.cut;
-      case 'spa': return Icons.spa;
-      case 'pets': return Icons.pets;
-      default: return Icons.pets;
+      case 'bathtub':
+        return Icons.bathtub;
+      case 'cut':
+        return Icons.cut;
+      case 'spa':
+        return Icons.spa;
+      case 'pets':
+        return Icons.pets;
+      default:
+        return Icons.pets;
     }
   }
 
@@ -70,21 +76,23 @@ class GlobalData {
     }
   }
 
-  // --- API Functions ---
-
-  // 1. ดึงข้อมูล Services
+  // ดึงข้อมูล Services
   static Future<List<Map<String, dynamic>>> fetchServices() async {
     try {
       final response = await http.get(Uri.parse('$baseUrl/services'));
       if (response.statusCode == 200) {
         List<dynamic> data = jsonDecode(response.body);
-        return data.map((item) => {
-          'id': item['id'].toString(),
-          'name': item['name'],
-          'price': double.tryParse(item['price'].toString()) ?? 0.0,
-          'icon': getIconFromName(item['icon_name'] ?? ''),
-          'color': getColorFromHex(item['color_hex'] ?? '#F48FB1'),
-        }).toList();
+        return data
+            .map(
+              (item) => {
+                'id': item['id'].toString(),
+                'name': item['name'],
+                'price': double.tryParse(item['price'].toString()) ?? 0.0,
+                'icon': getIconFromName(item['icon_name'] ?? ''),
+                'color': getColorFromHex(item['color_hex'] ?? '#F48FB1'),
+              },
+            )
+            .toList();
       }
       return [];
     } catch (e) {
@@ -93,7 +101,7 @@ class GlobalData {
     }
   }
 
-  // 2. ดึงข้อมูล Bookings
+  // ดึงข้อมูล Bookings
   static Future<List<Map<String, dynamic>>> fetchBookings() async {
     try {
       final response = await http.get(Uri.parse('$baseUrl/bookings'));
@@ -108,7 +116,7 @@ class GlobalData {
     }
   }
 
-  // 3. เพิ่ม Booking (POST)
+  // เพิ่ม Booking (POST)
   static Future<bool> addBooking(Map<String, dynamic> bookingData) async {
     try {
       final response = await http.post(
@@ -116,14 +124,13 @@ class GlobalData {
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(bookingData),
       );
-      // My JSON Server จะคืนค่า 201 Created (แต่ข้อมูลจะไม่เซฟถาวรในเซิร์ฟเวอร์จริง)
       return response.statusCode == 201;
     } catch (e) {
       return false;
     }
   }
 
-  // 4. อัปเดตสถานะ Booking (PATCH)
+  // อัปเดตสถานะ Booking (PATCH)
   static Future<bool> updateBookingStatus(String id, String newStatus) async {
     try {
       final response = await http.patch(
@@ -137,7 +144,7 @@ class GlobalData {
     }
   }
 
-  // 5. ลบ Booking (DELETE)
+  // ลบ Booking (DELETE)
   static Future<bool> deleteBooking(String id) async {
     try {
       final response = await http.delete(Uri.parse('$baseUrl/bookings/$id'));
@@ -146,13 +153,28 @@ class GlobalData {
       return false;
     }
   }
-  
-  // 6. ลบ Service (DELETE)
+
+  // ลบ Service (DELETE)
   static Future<bool> deleteService(String id) async {
     try {
       final response = await http.delete(Uri.parse('$baseUrl/services/$id'));
       return response.statusCode == 200;
     } catch (e) {
+      return false;
+    }
+  }
+
+  // เพิ่ม Service (POST)
+  static Future<bool> addService(Map<String, dynamic> serviceData) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/services'),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(serviceData),
+      );
+      return response.statusCode == 201 || response.statusCode == 200;
+    } catch (e) {
+      print("Error adding service: $e");
       return false;
     }
   }

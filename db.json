@@ -1,0 +1,45 @@
+{
+  "services": [
+    {
+      "id": "1",
+      "name": "อาบน้ำตัดขน",
+      "price": 450,
+      "icon_name": "cut",
+      "color_hex": "#FF8FAB"
+    },
+    {
+      "id": "2",
+      "name": "อาบน้ำเป่าขน",
+      "price": 300,
+      "icon_name": "bathtub",
+      "color_hex": "#85E3FF"
+    },
+    {
+      "id": "3",
+      "name": "สปานวดผ่อนคลาย",
+      "price": 600,
+      "icon_name": "spa",
+      "color_hex": "#FFF59D"
+    },
+    {
+      "id": "9d67",
+      "name": "ฝากเลี้ยง 1 ชม.",
+      "price": 200,
+      "icon_name": "pets",
+      "color_hex": "#FF8FAB"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1770585045626",
+      "customerName": "สมาน",
+      "petName": "สวย",
+      "petType": "Dog",
+      "serviceName": "อาบน้ำตัดขน",
+      "price": 450,
+      "status": "Completed",
+      "date": "2026-02-09",
+      "time": "4:10"
+    }
+  ]
+}

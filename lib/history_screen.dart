@@ -1,4 +1,3 @@
-// file: lib/history_screen.dart
 import 'package:flutter/material.dart';
 import 'main.dart';
 

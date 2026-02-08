@@ -1,4 +1,3 @@
-// file: lib/home_screen.dart
 import 'package:flutter/material.dart';
 import 'main.dart';
 
@@ -43,19 +42,87 @@ class _HomeScreenState extends State<HomeScreen> {
 
     if (confirm) {
       await GlobalData.deleteService(id);
-      _refreshServices(); // โหลดใหม่หลังจากลบ
+      _refreshServices();
     }
   }
 
-  // หมายเหตุ: My JSON Server เพิ่ม service ไม่ได้จริง (มันจะไม่จำ) แต่ใส่โครงไว้ให้ครับ
   void _addServiceDialog() {
+    final nameController = TextEditingController();
+    final priceController = TextEditingController();
+    String selectedIcon = 'pets'; 
+    String colorHex = '#FF8FAB'; 
+
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text("แจ้งเตือน"),
-        content: const Text("API นี้เป็นแบบจำลอง (Read-only) การเพิ่มข้อมูลอาจไม่บันทึกถาวร"),
-        actions: [TextButton(onPressed: () => Navigator.pop(context), child: const Text("ตกลง"))],
-      ),
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return AlertDialog(
+              title: const Text("เพิ่มบริการใหม่"),
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // ช่องกรอกชื่อบริการ
+                    TextField(
+                      controller: nameController,
+                      decoration: const InputDecoration(
+                        labelText: "ชื่อบริการ",
+                        prefixIcon: Icon(Icons.edit),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    
+                    // ช่องกรอกราคา
+                    TextField(
+                      controller: priceController,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        labelText: "ราคา (บาท)",
+                        prefixIcon: Icon(Icons.attach_money),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                  ],
+                ),
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("ยกเลิก"),
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFFF8FAB)),
+                  onPressed: () async {
+                    if (nameController.text.isEmpty || priceController.text.isEmpty) {
+                      return; 
+                    }
+
+                    final newService = {
+                      "name": nameController.text,
+                      "price": int.tryParse(priceController.text) ?? 0,
+                      "icon_name": selectedIcon,
+                      "color_hex": colorHex,
+                    };
+
+                    bool success = await GlobalData.addService(newService);
+
+                    if (success) {
+                      Navigator.pop(context); 
+                      _refreshServices();     
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('บันทึกไม่สำเร็จ โปรดลองใหม่')),
+                      );
+                    }
+                  },
+                  child: const Text("บันทึก", style: TextStyle(color: Colors.white)),
+                ),
+              ],
+            );
+          },
+        );
+      },
     );
   }
 
