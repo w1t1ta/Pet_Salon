@@ -19,15 +19,15 @@
 
 2. สามารถกดยกเลิกการจองได้หากสถานะยังเป็น "รออนุมัติ"
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/c0490e3f-c605-4112-a816-749799dc67a8" />
-<img width="381" height="808" alt="Image" src="https://github.com/user-attachments/assets/e3053cb3-c608-45e0-8bee-87e8aae9487c" />
-<img width="381" height="808" alt="Image" src="https://github.com/user-attachments/assets/ae19f3eb-6d88-47d3-a663-a1398072ab41" />
+<img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/e3053cb3-c608-45e0-8bee-87e8aae9487c" />
+<img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/ae19f3eb-6d88-47d3-a663-a1398072ab41" />
 
 
 ### 4. การจัดการบริการ - สำหรับเจ้าของร้าน (Admin)
 1. ในหน้าบริการ สามารถลบ หรือเพิ่มการบริการได้โดยระบุ "ชื่อบริการ" และ "ราคา"
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/d34c7143-0985-4b37-96f3-581cb5064e1a" />
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/5ddbcdbc-651e-4b27-9f4f-17611b98e87e" />
-<img width="381" height="808" alt="Image" src="https://github.com/user-attachments/assets/e11d7e88-eb73-428d-a17c-c87571276916" />
+<img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/e11d7e88-eb73-428d-a17c-c87571276916" />
 
 2. สามารถรับการจองโดยการกดเปลี่ยนสถานะ เช่น กด "รับงาน (Confirm)" สถานะการจองจะเปลี่ยนจาก "รออนุมัติ" เป็น "รับงานแล้ว" เมื่อการบริการเสร็จสิ้น สามารกด "เสร็จสิ้น (Complete)" สถานะจะเปลี่ยนเป็น "เสร็จสิ้น"
 <img width="190.5" height="404" alt="Image" src="https://github.com/user-attachments/assets/545a3a62-7ac5-4908-9e59-1ac2c4245fe5" />
